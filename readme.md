@@ -1,6 +1,5 @@
 <h1>ENTITY FRAMEWORK</h1>
 
-<img src="1.png"/>
 
 * Na pasta Models vou criar um arquivo cs para cada tabela com o mesmo nome especificado abaixo 
 * Posso ter quantas classes eu quiser 
@@ -17,13 +16,13 @@
 
 * Comandos
 
-dotnet --version
+                    dotnet --version
 
-dotnet new console -o
+                    dotnet new console -o
 
-dotnet add package Microsoft.EntityFrameworkCore
+                    dotnet add package Microsoft.EntityFrameworkCore
 
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+                    dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
 
                     namespace Projeto1.Data{
@@ -37,10 +36,11 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
                     }
 
 
+<h2>Entity</h2>
 
-context.SaveChanges(); -- salva no banco 
+* context.SaveChanges(); -- salva no banco 
 
-context -- para ler qualquer informação no banco
+* context -- para ler qualquer informação no banco
 
         builder.Property(x => x.Nome)
         .IsRequired() -- nao pode ser nulo
@@ -49,16 +49,14 @@ context -- para ler qualquer informação no banco
         .HasMaxLength(80); -- o tamanho do campo
         
 
-// criar indices com entity
+* criar indices com entity
 
-builder.HasIndex( x=>x.Nome, "IX_Categoria_Nome");
-.IsUnique() -- unico
+        builder.HasIndex( x=>x.Nome, "IX_Categoria_Nome");
+        .IsUnique() -- unico
 
 
-// Relacionamentos
+* Relacionamentos
 
-//um para muitos
-
-builder.HasOne(x => x.User)
-    .WithMany(x=>.Emails)
-    .HasConstraintName("FK_POST_USER); --constraint
+        builder.HasOne(x => x.User)
+            .WithMany(x=>.Emails)
+            .HasConstraintName("FK_POST_USER); --constraint
